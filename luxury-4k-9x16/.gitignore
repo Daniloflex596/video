@@ -1,0 +1,5 @@
+# I video scaricati restano in locale: troppo pesanti per GitHub.
+video/
+*.mp4
+*.parziale
+manifest.csv

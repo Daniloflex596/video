@@ -1,0 +1,42 @@
+# Temi di ricerca per la pagina motivazionale (uno per riga).
+# Aggiungi, togli o riordina liberamente: lo script li usa dall'alto in basso.
+luxury car
+supercar
+lamborghini
+ferrari
+sports car night
+luxury yacht
+yacht ocean
+private jet
+jet interior
+luxury watch
+rolex
+luxury mansion
+modern villa
+penthouse
+infinity pool
+luxury hotel
+five star hotel
+city skyline night
+skyscraper
+rooftop city
+money cash
+counting money
+champagne
+luxury lifestyle
+businessman suit
+business success
+private island
+helicopter
+first class travel
+luxury shopping
+diamond jewelry
+gold
+gym motivation
+running sunrise
+boxing training
+sunrise city
+ocean sunset
+dubai
+new york night
+monaco
