@@ -41,6 +41,25 @@ compressione dell'app:
 python3 scarica_video.py --pexels-key LA_TUA_CHIAVE --totale 300 --min-altezza 1920
 ```
 
+## Salvarli direttamente su Google Drive
+
+Se vuoi che i video finiscano su Google Drive, installa
+[Google Drive per Desktop](https://www.google.com/drive/download/) e punta lo
+script alla cartella sincronizzata: i video verranno caricati su Drive
+automaticamente man mano che vengono scaricati.
+
+Esempio su Windows:
+
+```bash
+python scarica_video.py --pexels-key LA_TUA_CHIAVE --cartella "G:\Il mio Drive\video-luxury"
+```
+
+Esempio su Mac:
+
+```bash
+python3 scarica_video.py --pexels-key LA_TUA_CHIAVE --cartella "$HOME/Google Drive/Il mio Drive/video-luxury"
+```
+
 ## Altre opzioni
 
 | Opzione | Effetto |
@@ -48,6 +67,7 @@ python3 scarica_video.py --pexels-key LA_TUA_CHIAVE --totale 300 --min-altezza 1
 | `--totale 500` | quanti video scaricare (default 300) |
 | `--min-altezza 1920` | accetta anche Full HD verticale (default 2160 = 4K) |
 | `--pixabay-key CHIAVE` | aggiunge Pixabay come seconda fonte |
+| `--cartella PERCORSO` | dove salvare i video (default: `./video`) |
 | `--solo-lista` | non scarica: crea solo `manifest.csv` con tutti i link |
 
 - **`temi.txt`** — la lista dei temi di ricerca (auto, yacht, jet privati,

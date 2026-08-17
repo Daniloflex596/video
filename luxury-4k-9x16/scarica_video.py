@@ -159,9 +159,10 @@ def cerca_pixabay(sessione: requests.Session, chiave: str, tema: str,
             return
 
 
-def scarica_file(sessione: requests.Session, candidato: dict) -> Path | None:
+def scarica_file(sessione: requests.Session, candidato: dict,
+                 cartella: Path) -> Path | None:
     nome_file = f"{candidato['id']}.mp4"
-    destinazione = CARTELLA_VIDEO / nome_file
+    destinazione = cartella / nome_file
     if destinazione.exists() and destinazione.stat().st_size > 0:
         print(f"  già presente: {nome_file}")
         return destinazione
@@ -202,6 +203,10 @@ def main() -> None:
                              "e trovare molti più video.")
     parser.add_argument("--solo-lista", action="store_true",
                         help="Non scaricare: crea solo manifest.csv con i link")
+    parser.add_argument("--cartella", type=Path, default=CARTELLA_VIDEO,
+                        help="Dove salvare i video. Puoi indicare la cartella "
+                             "sincronizzata di Google Drive per caricarli su "
+                             "Drive in automatico (default: ./video)")
     argomenti = parser.parse_args()
 
     if not argomenti.pexels_key and not argomenti.pixabay_key:
@@ -210,7 +215,7 @@ def main() -> None:
                  "  Pixabay (gratuita):             https://pixabay.com/api/docs/\n"
                  "Poi: python3 scarica_video.py --pexels-key LA_TUA_CHIAVE")
 
-    CARTELLA_VIDEO.mkdir(exist_ok=True)
+    argomenti.cartella.mkdir(parents=True, exist_ok=True)
     temi = leggi_temi()
     sessione = requests.Session()
 
@@ -262,13 +267,14 @@ def main() -> None:
         print("Modalità --solo-lista: nessun download eseguito.")
         return
 
-    print(f"\nScarico {len(scelti)} video in {CARTELLA_VIDEO}/ ...")
+    print(f"\nScarico {len(scelti)} video in {argomenti.cartella}/ ...")
     riusciti = 0
     for indice, candidato in enumerate(scelti, 1):
         print(f"[{indice}/{len(scelti)}]")
-        if scarica_file(sessione, candidato):
+        if scarica_file(sessione, candidato, argomenti.cartella):
             riusciti += 1
-    print(f"\nFatto: {riusciti}/{len(scelti)} video scaricati in {CARTELLA_VIDEO}/")
+    print(f"\nFatto: {riusciti}/{len(scelti)} video scaricati "
+          f"in {argomenti.cartella}/")
 
 
 if __name__ == "__main__":
